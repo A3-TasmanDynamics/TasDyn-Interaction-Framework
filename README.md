@@ -44,6 +44,6 @@ Please visit our companion repository: TasDyn-Interaction-Compat (Link to be upd
 
 There, you can submit simple JSON files containing memory points and labels. Our automated TypeScript compiler will parse your submission and generate the necessary SQF/CPP injection code to hook your favorite vehicles into this framework.
 
-📄 License
+## 📄 License
 This framework is released under the Arma Public License Share Alike (APL-SA).
 You are free to use it, learn from it, and require it as a dependency for your own vehicle mods, provided that your work is kept within the Arma universe, is strictly non-commercial, and any modifications to this framework are released under the same license. For full details, see the LICENSE file.
