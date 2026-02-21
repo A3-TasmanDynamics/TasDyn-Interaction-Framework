@@ -1,0 +1,14 @@
+name = "Tasman Dynamics - Interaction Framework"
+prefix = "tasdyn"
+author = "Tasman Dynamics"
+[version]
+major = 1
+minor = 0
+patch = 0
+description = "A highly-advanced, standalone clickable cockpit framework for Arma 3."
+
+main_prefix = ""
+
+# Generates a standard BI server key automatically so server admins can verify the mod
+[key]
+name = "tasdyn_framework"
