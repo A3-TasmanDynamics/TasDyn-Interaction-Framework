@@ -1,7 +1,4 @@
-# Content for the README.md to be saved as a .txt file
-readme_content = """# Tasman Dynamics - Interaction Framework
-
-
+# Tasman Dynamics - Interaction Framework
 
 A standalone, high-performance Data Bus-driven 3D interaction engine for Arma 3.
 
@@ -64,8 +61,3 @@ Submit a JSON file containing your vehicle's memory points and system logic. Our
 
 This framework is released under the Arma Public License Share Alike (APL-SA).
 Non-commercial use, modification, and redistribution are permitted, provided the work remains within the Arma universe and any derivatives are released under the same license. See the LICENSE file for full details.
-"""
-
-# Writing the content to a .txt file
-with open('README.txt', 'w', encoding='utf-8') as f:
-    f.write(readme_content)
