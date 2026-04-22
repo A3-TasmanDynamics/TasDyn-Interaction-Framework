@@ -12,47 +12,36 @@ Developed by Tasman Dynamics, this framework bridges the gap between traditional
 
 ### 🎯 Overview
 
-<table>
-<tr>
-<td align="center">
-  <b>🖱️ Detached Cursor</b><br/>
-  Mouse Independence
-</td>
-<td align="center">
-  <b>📊 Data Bus</b><br/>
-  Bitmask Logic
-</td>
-<td align="center">
-  <b>🎯 3D Raycasting</b><br/>
-  Engine Optimized
-</td>
-</tr>
-<tr>
-<td align="center">
-  <b>🎛️ Rotary Dials</b><br/>
-  Analog Control
-</td>
-<td align="center">
-  <b>🔄 MP Sync</b><br/>
-  Deterministic
-</td>
-<td align="center">
-  <b>⚡ Zero Deps</b><br/>
-  Pure SQF
-</td>
-</tr>
-</table>
+```
+╔════════════════════════════════════════════════════════════════════╗
+║                                                                    ║
+║              ⚙️  CORE CAPABILITIES                                 ║
+║                                                                    ║
+╠═══════════════════╦═════════════════════╦══════════════════════════╣
+║                   ║                     ║                          ║
+║   🖱️ CURSOR      ║   📊 DATA BUS       ║   🎯 RAYCASTING         ║
+║   Detached        ║   Bitmask Logic     ║   Engine-Level          ║
+║   Independence    ║   Efficient Sync    ║   Zero Impact           ║
+║                   ║                     ║                          ║
+╠═══════════════════╬═════════════════════╬══════════════════════════╣
+║                   ║                     ║                          ║
+║   🎛️ DIALS       ║   🔄 MP SYNC        ║   ⚡ ZERO DEPS          ║
+║   Rotary Control  ║   Deterministic     ║   Pure SQF              ║
+║   Analog Input    ║   Multiplayer       ║   No Dependencies       ║
+║                   ║                     ║                          ║
+╚═══════════════════╩═════════════════════╩══════════════════════════╝
+```
 
 ## ✨ Key Features
 
-| Feature | Description |
-|---------|-------------|
-| 🖱️ **Detached Interactive Cursor** | Decouples mouse movement from head-tracking. Pilots can maintain flight stability on a HOTAS or Collective while manipulating overhead panels or center consoles. |
-| 📊 **Data Bus Emulation (DBE)** | Moves away from "script-per-switch" logic. Interactions are processed as digital "Words" (bitmasks) across a simulated data bus, mirroring the ARINC 429 and MIL-STD-1553 standards. |
-| 🔄 **Deterministic Multiplayer Sync** | High-fidelity synchronization ensures every crew member sees the exact same instrument state. Uses a request-response pattern to validate switch actions against vehicle power and damage states before broadcasting. |
-| ⚡ **High-Performance 3D Raycasting** | Optimized engine-level math (worldToScreen and memory-point projection) ensures zero framerate impact, even in cockpits with hundreds of interactive nodes. |
-| 🎛️ **Rotary Dial & Axis Support** | Intercepts the Z-axis (scroll wheel) to allow for smooth, analog-style control of radio frequencies, lighting dimmers, and volume knobs. |
-| 🚀 **Zero Dependencies** | Built entirely on vanilla Arma 3 UI and SQF. No CBA_A3 requirement. |
+| Icon | Feature | Details |
+|:----:|---------|---------|
+| 🖱️ | **Detached Interactive Cursor** | Decouples mouse movement from head-tracking. Pilots maintain flight stability on HOTAS/Collective while manipulating overhead panels. |
+| 📊 | **Data Bus Emulation (DBE)** | Processes interactions as digital "Words" (bitmasks) across simulated data bus, mirroring ARINC 429 and MIL-STD-1553 standards. |
+| 🔄 | **Deterministic Multiplayer Sync** | High-fidelity synchronization ensures every crew member sees identical instrument state via request-response pattern. |
+| ⚡ | **High-Performance 3D Raycasting** | Optimized engine-level math ensures zero framerate impact across hundreds of interactive nodes. |
+| 🎛️ | **Rotary Dial & Axis Support** | Smooth analog-style control of radio frequencies, lighting dimmers, and volume knobs via Z-axis intercept. |
+| 🚀 | **Zero Dependencies** | Pure vanilla Arma 3 UI and SQF. No CBA_A3 or external dependencies. |
 
 ## 🛰️ The Engineering: Data Bus Emulation
 
@@ -62,72 +51,62 @@ To achieve maximum realism and network efficiency, the framework treats the cock
 
 Instead of syncing 200 individual variables for 200 switches, the framework packs switch states into System Words using bitmasking. A single integer can represent the state of an entire electrical bus or fuel panel.
 
+```mermaid
+graph LR
+    subgraph Traditional["❌ TRADITIONAL"]
+        A["var_switch_1<br/>var_switch_2<br/>var_switch_3<br/>var_switch_4<br/>var_switch_5<br/>var_switch_6<br/>var_switch_7<br/>var_switch_8"]
+    end
+    
+    subgraph Modern["✅ DATA BUS EMULATION"]
+        B["System Word<br/>Integer<br/><br/>0 1 0 1 1 0 1 0<br/>8 switches<br/>packed into 1 word"]
+    end
+    
+    C["Cost Analysis"]
+    
+    Traditional --> C
+    Modern --> C
+    
+    style Traditional fill:#d0021b,stroke:#8f0010,stroke-width:2px,color:#fff
+    style Modern fill:#2d5a2d,stroke:#50e3c2,stroke-width:2px,color:#fff
+    style A fill:#d0021b,stroke:#8f0010,stroke-width:1px,color:#fff
+    style B fill:#2d5a2d,stroke:#50e3c2,stroke-width:1px,color:#fff
+    style C fill:#f5a623,stroke:#c68015,stroke-width:2px,color:#000
 ```
-Traditional Approach          Data Bus Emulation Approach
-────────────────────        ──────────────────────────────
-var_switch_1                System Word (Integer)
-var_switch_2                ┌─────────────────┐
-var_switch_3                │ 0 1 0 1 1 0 1 0 │  (8 switches)
-var_switch_4                ├─────────────────┤
-var_switch_5                │ Bitmasking      │
-var_switch_6                │ Efficient Sync  │
-var_switch_7                │ Low Bandwidth   │
-var_switch_8                └─────────────────┘
 
-❌ 8 network transmissions  ✅ 1 network transmission
-❌ High bandwidth            ✅ Minimal overhead
-```
+**Efficiency Comparison:**
+| Metric | Traditional | Data Bus |
+|--------|:-----------:|:--------:|
+| Network Transmissions | ❌ 8 | ✅ 1 |
+| Bandwidth Usage | ❌ High | ✅ Minimal |
+| Sync Complexity | ❌ High | ✅ Deterministic |
 
 ### Master Bus Controller Logic
 
 The vehicle "Owner" (the Pilot) acts as the Bus Controller.
 
+```mermaid
+graph TD
+    A["👤 Co-Pilot<br/>Clicks Switch"] -->|REQUEST| B["🖥️ Pilot's Machine<br/>Receives Request"]
+    B -->|Validation Check| C{System State<br/>Valid?}
+    C -->|Power OK?<br/>Not Damaged?<br/>Authority OK?| C
+    C -->|❌ INVALID| D["🚫 Action Rejected<br/>Send Rejection"]
+    C -->|✅ VALID| E["⚙️ Update System<br/>Word"]
+    E -->|BROADCAST| F["📡 Sync to All Clients"]
+    F -->|Animation| G["🎬 Visual Feedback"]
+    F -->|Sounds| H["🔊 Audio Feedback"]
+    F -->|UI| I["🖥️ Panel Updates"]
+    D --> J["End"]
+    G --> J
+    H --> J
+    I --> J
+    
+    style A fill:#4a90e2,stroke:#2e5c8a,stroke-width:2px,color:#fff
+    style B fill:#7b68ee,stroke:#4c2d8f,stroke-width:2px,color:#fff
+    style C fill:#f5a623,stroke:#c68015,stroke-width:2px,color:#000
+    style D fill:#d0021b,stroke:#8f0010,stroke-width:2px,color:#fff
+    style E fill:#50e3c2,stroke:#2d8878,stroke-width:2px,color:#fff
+    style F fill:#7b68ee,stroke:#4c2d8f,stroke-width:2px,color:#fff
 ```
-┌──────────────┐
-│  Co-Pilot    │
-│  Clicks      │
-│  Switch      │
-└──────┬───────┘
-       │
-       │ 1️⃣ REQUEST
-       ▼
-┌─────────────────────────────┐
-│      Pilot's Machine        │
-│  ┌─────────────────────┐    │
-│  │ Validation Check    │    │
-│  ├─────────────────────┤    │
-│  │ • Power State?      │    │
-│  │ • System Damaged?   │    │
-│  │ • Authority Check?  │    │
-│  └─────────────────────┘    │
-└──────┬──────────────────────┘
-       │
-       ├─ ❌ Invalid → Reject
-       │
-       └─ ✅ Valid
-          │
-          │ 2️⃣ UPDATE
-          ▼
-     ┌──────────────┐
-     │ System Word  │
-     │   Updated    │
-     └────┬─────────┘
-          │
-          │ 3️⃣ BROADCAST
-          ▼
-    ┌────────────────┐
-    │  All Clients   │
-    │  • Animation   │
-    │  • Sounds      │
-    │  • UI Update   │
-    └────────────────┘
-```
-
-**Flow Steps:**
-1. **Request:** A co-pilot clicks a switch.
-2. **Validation:** The request is sent to the Pilot's machine. The framework checks if the system has power and is not damaged.
-3. **Execution:** If valid, the Pilot's machine updates the "System Word."
-4. **Broadcast:** The updated state is synced to all clients, triggering local animations and sound effects simultaneously.
 
 ## 🏗️ Architecture Philosophy
 
@@ -135,26 +114,51 @@ This repository contains the core interaction engine. It is strictly decoupled f
 
 By separating the math and network logic from vehicle models, server admins can run this framework as a lightweight, universal dependency. Community modders can hook their own vehicles into the system by simply providing a data-driven configuration.
 
+```mermaid
+graph TB
+    subgraph Core["🎯 CORE ENGINE"]
+        A["3D Raycasting<br/>worldToScreen Math"]
+        B["Data Bus Emulation<br/>Bitmask Logic"]
+        C["Multiplayer Sync<br/>Request-Response"]
+    end
+    
+    subgraph Config["⚙️ CONFIGURATION"]
+        D["Vehicle Configs<br/>JSON Files"]
+    end
+    
+    subgraph Vehicles["🚁 VEHICLES"]
+        E["Vanilla Arma 3<br/>Aircraft"]
+        F["RHS Vehicles"]
+        G["CUP Vehicles"]
+        H["Community Add-ons"]
+    end
+    
+    A --> Core
+    B --> Core
+    C --> Core
+    Core --> D
+    D --> E
+    D --> F
+    D --> G
+    D --> H
+    
+    style Core fill:#1a1f3a,stroke:#4a90e2,stroke-width:3px,color:#fff
+    style A fill:#4a90e2,stroke:#2e5c8a,stroke-width:2px,color:#fff
+    style B fill:#7b68ee,stroke:#4c2d8f,stroke-width:2px,color:#fff
+    style C fill:#50e3c2,stroke:#2d8878,stroke-width:2px,color:#fff
+    style Config fill:#f5a623,stroke:#c68015,stroke-width:2px,color:#000
+    style Vehicles fill:#2d5a2d,stroke:#50e3c2,stroke-width:2px,color:#fff
+    style D fill:#f5a623,stroke:#c68015,stroke-width:2px,color:#000
+    style E fill:#2d5a2d,stroke:#50e3c2,stroke-width:1px,color:#fff
+    style F fill:#2d5a2d,stroke:#50e3c2,stroke-width:1px,color:#fff
+    style G fill:#2d5a2d,stroke:#50e3c2,stroke-width:1px,color:#fff
+    style H fill:#2d5a2d,stroke:#50e3c2,stroke-width:1px,color:#fff
 ```
-┌──────────────────────────────────────────────────────┐
-│   Tasman Dynamics Interaction Framework (Core)       │
-│                                                      │
-│  ┌──────────────┐  ┌──────────────┐  ┌────────────┐  │
-│  │ 3D Raycasting│  │  Data Bus    │  │  Multiplayer│ │
-│  │    Engine    │  │  Emulation   │  │    Sync    │  │
-│  └──────┬───────┘  └──────┬───────┘  └────┬───────┘  │
-│         └─────────────────┴────────────────┘         │
-│                      │                               │
-└──────────────────────┼───────────────────────────────┘
-                       │
-         ┌─────────────┴─────────────┐
-         │                           │
-    ┌────▼────┐               ┌──────▼──────┐
-    │ Vehicle │               │  Vehicles   │
-    │ Config  │               │  (Modded)   │
-    │ (JSON)  │               │             │
-    └─────────┘               └─────────────┘
-```
+
+**Architecture Benefits:**
+- 🎯 Single source of truth for cockpit logic
+- 🔗 Seamless integration with any vehicle model
+- 📦 Lightweight core with modular expansion
 
 ## 🛠️ Building from Source
 
@@ -179,22 +183,24 @@ hemtt build
 # ✅ Output: .hemtt/out/build/@Tasman Dynamics - Interaction Framework/
 ```
 
-**Build Process Flow:**
+**Build Pipeline:**
 
-```
-Source Code
-    ↓
-┌─────────────────┐
-│  hemtt build    │
-│  • Compile SQF  │
-│  • Pack PBO     │
-│  • Validate     │
-└────────┬────────┘
-         ↓
-  .hemtt/out/build/
-  @Tasman Dynamics - Interaction Framework
-         ↓
-    Ready for Deploy
+```mermaid
+graph LR
+    A["📁 Source Code<br/>SQF Files"] --> B["🔨 HEMTT Build"]
+    B --> C["✅ Parse &<br/>Validate"]
+    C --> D["📦 Pack into<br/>PBO"]
+    D --> E["✓ Optimization"]
+    E --> F["📦 Compiled Output<br/>@TasDyn - Framework"]
+    F --> G["🚀 Ready for<br/>Deployment"]
+    
+    style A fill:#4a90e2,stroke:#2e5c8a,stroke-width:2px,color:#fff
+    style B fill:#7b68ee,stroke:#4c2d8f,stroke-width:2px,color:#fff
+    style C fill:#50e3c2,stroke:#2d8878,stroke-width:2px,color:#fff
+    style D fill:#f5a623,stroke:#c68015,stroke-width:2px,color:#000
+    style E fill:#50e3c2,stroke:#2d8878,stroke-width:2px,color:#fff
+    style F fill:#2d5a2d,stroke:#50e3c2,stroke-width:2px,color:#fff
+    style G fill:#4a90e2,stroke:#2e5c8a,stroke-width:2px,color:#fff
 ```
 
 ## 🤝 Contributing & Compatibility
@@ -203,42 +209,51 @@ We utilize a **Data-Driven Configuration model**. If you wish to make a vehicle 
 
 ### How It Works
 
-```
-Your Vehicle Model
-        ↓
-  Create JSON Config
-  • Memory Points
-  • System Logic
-  • Switch States
-        ↓
- Submit to TasDyn-Interaction-Compat
-        ↓
-┌──────────────────────────┐
-│ TypeScript Compiler      │
-│ • Parse Config           │
-│ • Generate Injection     │
-│ • Auto-Hook Vehicle      │
-└──────────┬───────────────┘
-           ↓
-    ✅ Vehicle Ready
-       for Framework
+```mermaid
+graph TD
+    A["🚁 Your Vehicle Model"] --> B["📝 Create JSON Config<br/>Memory Points<br/>System Logic<br/>Switch States"]
+    B --> C["📤 Submit to<br/>TasDyn-Interaction-Compat"]
+    C --> D["🔧 TypeScript Compiler"]
+    D --> E["✓ Parse Configuration"]
+    E --> F["✓ Validate Structure"]
+    F --> G["✓ Generate Injection Code"]
+    G --> H["✓ Auto-Hook Vehicle"]
+    H --> I["✅ Vehicle Ready!<br/>Fully Integrated<br/>Framework Support"]
+    
+    style A fill:#4a90e2,stroke:#2e5c8a,stroke-width:2px,color:#fff
+    style B fill:#7b68ee,stroke:#4c2d8f,stroke-width:2px,color:#fff
+    style C fill:#f5a623,stroke:#c68015,stroke-width:2px,color:#000
+    style D fill:#7b68ee,stroke:#4c2d8f,stroke-width:2px,color:#fff
+    style E fill:#50e3c2,stroke:#2d8878,stroke-width:2px,color:#fff
+    style F fill:#50e3c2,stroke:#2d8878,stroke-width:2px,color:#fff
+    style G fill:#50e3c2,stroke:#2d8878,stroke-width:2px,color:#fff
+    style H fill:#50e3c2,stroke:#2d8878,stroke-width:2px,color:#fff
+    style I fill:#2d5a2d,stroke:#50e3c2,stroke-width:3px,color:#fff
 ```
 
 ### Getting Started
 
-Please visit our companion repository: **[TasDyn-Interaction-Compat](link-pending)** 
+**Visit:** [TasDyn-Interaction-Compat](link-pending) (Companion Repository)
 
-**Supported Vehicles:** Vanilla, RHS, CUP, and community addons
+**Supported Vehicle Types:**
+- ✅ Vanilla Arma 3 Aircraft
+- ✅ RHS Vehicles
+- ✅ CUP Vehicles
+- ✅ Community Add-ons
 
-Submit a JSON file containing your vehicle's memory points and system logic. Our TypeScript-based compiler will parse your submission and generate the necessary injection code to hook the vehicle into the framework.
+Submit a JSON file with your vehicle's memory points and system logic. Our TypeScript-based compiler will automatically generate the necessary injection code to hook your vehicle into the framework.
 
 ## 📄 License
 
 This framework is released under the **Arma Public License Share Alike (APL-SA)**.
 
-- ✅ Non-commercial use, modification, and redistribution permitted
-- ✅ Must remain within the Arma universe
-- ✅ Derivatives must be released under the same license
+| Capability | Permission |
+|:-----------|:----------:|
+| 🔓 Non-commercial Use | ✅ Allowed |
+| ✏️ Modification | ✅ Allowed |
+| 📦 Redistribution | ✅ Allowed |
+| 🌍 Remain in Arma Universe | ✅ Required |
+| 📝 Derivatives under APL-SA | ✅ Required |
 
 See the [LICENSE](LICENSE) file for full details.
 
@@ -246,17 +261,26 @@ See the [LICENSE](LICENSE) file for full details.
 
 <div align="center">
 
-### 🎯 Join the Community
+## 🌟 Enterprise-Grade Flight Simulation
 
-Made with ❤️ by **Tasman Dynamics**
-
-[📚 Documentation](docs/) • [🐛 Report Issues](issues/) • [💬 Discussions](discussions/) • [📢 Announcements](announcements/)
+**Tasman Dynamics** | Arma 3 Aviation Framework
 
 ```
-╔════════════════════════════════════════════╗
-║  Fly Realistic. Interact Authentically.    ║
-║  Build Tomorrow's Aviation Experience.     ║
-╚════════════════════════════════════════════╝
+╔═══════════════════════════════════════════════════╗
+║                                                   ║
+║  Professional Cockpit Interactions                ║
+║  High-Fidelity Multiplayer Synchronization       ║
+║  Zero-Compromise Performance                      ║
+║                                                   ║
+║  Building the Future of Virtual Aviation         ║
+║                                                   ║
+╚═══════════════════════════════════════════════════╝
 ```
+
+### Resources
+
+[📚 Documentation](docs/) • [🐛 Report Issues](issues/) • [💬 Community](discussions/) • [📢 Updates](announcements/)
+
+Made with ❤️ for the Arma 3 Aviation Community
 
 </div>
