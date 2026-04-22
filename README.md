@@ -12,14 +12,36 @@ Developed by Tasman Dynamics, this framework bridges the gap between traditional
 
 ### 🎯 Overview
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│         Tasman Dynamics Interaction Framework                   │
-│                                                                  │
-│  🖱️ Detached Cursor  │  📊 Data Bus  │  🎯 3D Raycasting        │
-│  🎛️ Rotary Dials     │  🔄 MP Sync   │  ⚡ Zero Deps            │
-└─────────────────────────────────────────────────────────────────┘
-```
+<table>
+<tr>
+<td align="center">
+  <b>🖱️ Detached Cursor</b><br/>
+  Mouse Independence
+</td>
+<td align="center">
+  <b>📊 Data Bus</b><br/>
+  Bitmask Logic
+</td>
+<td align="center">
+  <b>🎯 3D Raycasting</b><br/>
+  Engine Optimized
+</td>
+</tr>
+<tr>
+<td align="center">
+  <b>🎛️ Rotary Dials</b><br/>
+  Analog Control
+</td>
+<td align="center">
+  <b>🔄 MP Sync</b><br/>
+  Deterministic
+</td>
+<td align="center">
+  <b>⚡ Zero Deps</b><br/>
+  Pure SQF
+</td>
+</tr>
+</table>
 
 ## ✨ Key Features
 
@@ -88,7 +110,7 @@ The vehicle "Owner" (the Pilot) acts as the Bus Controller.
           ▼
      ┌──────────────┐
      │ System Word  │
-     │   Updated   │
+     │   Updated    │
      └────┬─────────┘
           │
           │ 3️⃣ BROADCAST
@@ -116,14 +138,14 @@ By separating the math and network logic from vehicle models, server admins can 
 ```
 ┌──────────────────────────────────────────────────────┐
 │   Tasman Dynamics Interaction Framework (Core)       │
-│                                                       │
+│                                                      │
 │  ┌──────────────┐  ┌──────────────┐  ┌────────────┐  │
 │  │ 3D Raycasting│  │  Data Bus    │  │  Multiplayer│ │
 │  │    Engine    │  │  Emulation   │  │    Sync    │  │
 │  └──────┬───────┘  └──────┬───────┘  └────┬───────┘  │
-│         └─────────────────┴────────────────┘           │
-│                      │                                 │
-└──────────────────────┼─────────────────────────────────┘
+│         └─────────────────┴────────────────┘         │
+│                      │                               │
+└──────────────────────┼───────────────────────────────┘
                        │
          ┌─────────────┴─────────────┐
          │                           │
