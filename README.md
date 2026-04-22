@@ -12,24 +12,25 @@ Developed by Tasman Dynamics, this framework bridges the gap between traditional
 
 ### 🎯 Overview
 
-```
-╔════════════════════════════════════════════════════════════════════╗
-║                                                                    ║
-║              ⚙️  CORE CAPABILITIES                                 ║
-║                                                                    ║
-╠═══════════════════╦═════════════════════╦══════════════════════════╣
-║                   ║                     ║                          ║
-║   🖱️ CURSOR      ║   📊 DATA BUS       ║   🎯 RAYCASTING         ║
-║   Detached        ║   Bitmask Logic     ║   Engine-Level          ║
-║   Independence    ║   Efficient Sync    ║   Zero Impact           ║
-║                   ║                     ║                          ║
-╠═══════════════════╬═════════════════════╬══════════════════════════╣
-║                   ║                     ║                          ║
-║   🎛️ DIALS       ║   🔄 MP SYNC        ║   ⚡ ZERO DEPS          ║
-║   Rotary Control  ║   Deterministic     ║   Pure SQF              ║
-║   Analog Input    ║   Multiplayer       ║   No Dependencies       ║
-║                   ║                     ║                          ║
-╚═══════════════════╩═════════════════════╩══════════════════════════╝
+```mermaid
+graph TB
+    subgraph Cockpit["🎮 COCKPIT INTERACTION ENGINE"]
+        direction LR
+        A["🖱️<br/>DETACHED<br/>CURSOR<br/><br/>Mouse<br/>Independence"]
+        B["📊<br/>DATA BUS<br/>EMULATION<br/><br/>Bitmask<br/>Logic"]
+        C["🎯<br/>3D<br/>RAYCASTING<br/><br/>Engine<br/>Optimized"]
+        D["🎛️<br/>ROTARY<br/>DIALS<br/><br/>Analog<br/>Control"]
+        E["🔄<br/>MP SYNC<br/><br/>Deterministic<br/>Multiplayer"]
+        F["⚡<br/>ZERO<br/>DEPS<br/><br/>Pure SQF"]
+    end
+    
+    style Cockpit fill:#1a1f3a,stroke:#4a90e2,stroke-width:3px,color:#fff
+    style A fill:#4a90e2,stroke:#2e5c8a,stroke-width:2px,color:#fff,padding:20px
+    style B fill:#7b68ee,stroke:#4c2d8f,stroke-width:2px,color:#fff,padding:20px
+    style C fill:#50e3c2,stroke:#2d8878,stroke-width:2px,color:#fff,padding:20px
+    style D fill:#f5a623,stroke:#c68015,stroke-width:2px,color:#000,padding:20px
+    style E fill:#d0021b,stroke:#8f0010,stroke-width:2px,color:#fff,padding:20px
+    style F fill:#2d5a2d,stroke:#50e3c2,stroke-width:2px,color:#fff,padding:20px
 ```
 
 ## ✨ Key Features
@@ -233,7 +234,7 @@ graph TD
 
 ### Getting Started
 
-**Visit:** [TasDyn-Interaction-Compat](link-pending) (Companion Repository)
+**Visit:** [TasDyn-Interaction-Compat](https://github.com/A3-TasmanDynamics/TasDyn-Interaction-Compat) (Companion Repository)
 
 **Supported Vehicle Types:**
 - ✅ Vanilla Arma 3 Aircraft
@@ -265,22 +266,45 @@ See the [LICENSE](LICENSE) file for full details.
 
 **Tasman Dynamics** | Arma 3 Aviation Framework
 
+### Core Promise
+
+```mermaid
+graph LR
+    A["✈️<br/>FLY REALISTIC"] -->|Professional| B["🎮<br/>INTERACT<br/>AUTHENTICALLY"]
+    B -->|Deterministic| C["🌍<br/>BUILD TOMORROW'S<br/>AVIATION"]
+    
+    style A fill:#4a90e2,stroke:#2e5c8a,stroke-width:3px,color:#fff
+    style B fill:#7b68ee,stroke:#4c2d8f,stroke-width:3px,color:#fff
+    style C fill:#50e3c2,stroke:#2d8878,stroke-width:3px,color:#fff
 ```
-╔═══════════════════════════════════════════════════╗
-║                                                   ║
-║  Professional Cockpit Interactions                ║
-║  High-Fidelity Multiplayer Synchronization       ║
-║  Zero-Compromise Performance                      ║
-║                                                   ║
-║  Building the Future of Virtual Aviation         ║
-║                                                   ║
-╚═══════════════════════════════════════════════════╝
-```
 
-### Resources
+### Why Tasman Dynamics?
 
-[📚 Documentation](docs/) • [🐛 Report Issues](issues/) • [💬 Community](discussions/) • [📢 Updates](announcements/)
+| Aspect | Benefit |
+|:------:|---------|
+| 🏗️ **Architecture** | Decoupled, modular, enterprise-ready |
+| ⚡ **Performance** | Zero framerate impact at scale |
+| 🔗 **Integration** | Works with any Arma 3 vehicle |
+| 🛡️ **Reliability** | Deterministic multiplayer sync |
+| 📚 **Ecosystem** | Growing community & support |
 
-Made with ❤️ for the Arma 3 Aviation Community
+---
+
+### Get Involved
+
+**[📚 Documentation](docs/)** • **[🐛 Report Issues](issues/)** • **[💬 Community](discussions/)** • **[📢 Updates](announcements/)**
+
+### Support & Resources
+
+- 🚀 [Quick Start Guide](QUICK_START.md)
+- 📖 [Full Documentation](docs/)
+- 🐛 [Known Issues & Roadmap](issues/)
+- 💬 [Community Forum](discussions/)
+
+---
+
+Made with ❤️ by **Tasman Dynamics** for the Arma 3 Aviation Community
+
+**Version**: 1.0.0 | **License**: APL-SA | **Status**: Production Ready ✅
 
 </div>
