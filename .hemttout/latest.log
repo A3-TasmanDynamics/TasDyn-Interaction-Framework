@@ -1,9 +1,13 @@
-2026-02-21T09:18:55.969467Z TRACE ThreadId(01) version: 1.18.2
-2026-02-21T09:18:55.969529Z TRACE ThreadId(01) platform: windows
-2026-02-21T09:18:55.969538Z TRACE ThreadId(01) args: [
+2026-02-21T09:39:10.164916Z TRACE ThreadId(01) version: 1.18.2
+2026-02-21T09:39:10.164977Z TRACE ThreadId(01) platform: windows
+2026-02-21T09:39:10.164986Z TRACE ThreadId(01) args: [
     "C:\\Users\\Andrew-PC\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrettMayson.HEMTT_Microsoft.Winget.Source_8wekyb3d8bbwe\\hemtt.exe",
-    "launch",
+    "build",
 ]
-2026-02-21T09:18:55.970417Z DEBUG ThreadId(01) using global config directory: "C:\\Users\\Andrew-PC\\AppData\\Roaming\\hemtt"
-2026-02-21T09:18:55.970851Z TRACE ThreadId(01) writing ci annotations to .hemttout/ci_annotations.txt
-2026-02-21T09:18:55.970884Z TRACE ThreadId(01) wrote 0 ci annotations to .hemttout/ci_annotations.txt
+2026-02-21T09:39:10.175660Z ERROR ThreadId(01) Failed to execute command:
+Project error: Toml Error: TOML parse error at line 1, column 1
+  |
+1 | name = "Tasman Dynamics - Interaction Framework"
+  | ^
+missing field `prefix`
+

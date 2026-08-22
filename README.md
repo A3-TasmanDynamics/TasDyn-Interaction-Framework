@@ -1,8 +1,16 @@
-# 🎮 Tasman Dynamics - Interaction Framework
+<div align="center">
 
-[![License: APL-SA](https://img.shields.io/badge/License-APL%20SA-blue.svg)](LICENSE)
-[![Language: SQF](https://img.shields.io/badge/Language-SQF-informational.svg)](https://community.bistudio.com/)
-[![Arma 3](https://img.shields.io/badge/Arma-3-critical.svg)](https://arma3.com/)
+<img src="docs/assets/banner.svg" alt="Interaction Framework — Data Bus-driven 3D cockpit interaction engine" width="100%"/>
+
+[![License: APL-SA](https://img.shields.io/badge/license-APL--SA-f59e0b)](LICENSE)
+[![Platform: Arma 3](https://img.shields.io/badge/platform-Arma%203-0f172a)](https://arma3.com/)
+[![Language: SQF](https://img.shields.io/badge/language-SQF-0f172a)](https://community.bistudio.com/)
+[![Status: Production Ready](https://img.shields.io/badge/status-production%20ready-f59e0b)](#-license)
+[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/Wt4ahmxVrs)
+
+</div>
+
+---
 
 > A standalone, high-performance **Data Bus-driven 3D interaction engine** for Arma 3.
 
@@ -244,6 +252,12 @@ graph TD
 
 Submit a JSON file with your vehicle's memory points and system logic. Our TypeScript-based compiler will automatically generate the necessary injection code to hook your vehicle into the framework.
 
+## 🔗 Related Projects
+
+| Project | Role |
+|---|---|
+| [TasDyn-Interaction-Compat](https://github.com/A3-TasmanDynamics/TasDyn-Interaction-Compat) | The JSON-to-SQF compiler referenced above — turns a vehicle config into generated injection code |
+
 ## 📄 License
 
 This framework is released under the **Arma Public License Share Alike (APL-SA)**.
@@ -292,14 +306,7 @@ graph LR
 
 ### Get Involved
 
-**[📚 Documentation](docs/)** • **[🐛 Report Issues](issues/)** • **[💬 Community](discussions/)** • **[📢 Updates](announcements/)**
-
-### Support & Resources
-
-- 🚀 [Quick Start Guide](QUICK_START.md)
-- 📖 [Full Documentation](docs/)
-- 🐛 [Known Issues & Roadmap](issues/)
-- 💬 [Community Forum](discussions/)
+**[🐛 Report Issues](https://github.com/A3-TasmanDynamics/TasDyn-Interaction-Framework/issues)** • **[💬 Community](https://discord.gg/Wt4ahmxVrs)**
 
 ---
 

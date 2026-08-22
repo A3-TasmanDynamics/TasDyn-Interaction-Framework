@@ -15,7 +15,7 @@ class CfgPatches
 class CfgFunctions {
     class TasDyn {
         class Interaction {
-            file = "tasdyn\addons\tasdyn_interaction\functions";
+            file = "z\addons\tasdyn_interaction\functions";
 
             class initInteraction { preInit = 1; };
 

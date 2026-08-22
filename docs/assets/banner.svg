@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" width="1200" height="280">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#030712"/>
+      <stop offset="55%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="55%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="280" fill="url(#bg)"/>
+  <rect width="1200" height="280" fill="url(#grid)"/>
+
+  <!-- Reticle accent, left -->
+  <circle cx="96" cy="140" r="58" fill="none" stroke="#f59e0b" stroke-width="2" opacity="0.35"/>
+  <g stroke="url(#amber)" stroke-width="4" stroke-linecap="round" opacity="0.8">
+    <line x1="96" y1="66" x2="96" y2="78"/>
+    <line x1="96" y1="202" x2="96" y2="214"/>
+    <line x1="22" y1="140" x2="34" y2="140"/>
+    <line x1="158" y1="140" x2="170" y2="140"/>
+  </g>
+
+  <!-- Emblem: avionics rotary dial -->
+  <g transform="translate(96,140)">
+    <circle r="30" fill="none" stroke="url(#amber)" stroke-width="4"/>
+    <g stroke="url(#amber)" stroke-width="3" stroke-linecap="round" opacity="0.75">
+      <line x1="0" y1="-30" x2="0" y2="-22"/>
+      <line x1="21.2" y1="-21.2" x2="15.6" y2="-15.6"/>
+      <line x1="30" y1="0" x2="22" y2="0"/>
+      <line x1="21.2" y1="21.2" x2="15.6" y2="15.6"/>
+      <line x1="0" y1="30" x2="0" y2="22"/>
+      <line x1="-21.2" y1="21.2" x2="-15.6" y2="15.6"/>
+      <line x1="-30" y1="0" x2="-22" y2="0"/>
+      <line x1="-21.2" y1="-21.2" x2="-15.6" y2="-15.6"/>
+    </g>
+    <line x1="0" y1="0" x2="18" y2="-14" stroke="#f1f5f9" stroke-width="4" stroke-linecap="round"/>
+    <circle r="4" fill="#f1f5f9"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="200" y="122" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="800"
+        letter-spacing="2" fill="#f1f5f9">INTERACTION FRAMEWORK</text>
+  <text x="202" y="160" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400"
+        letter-spacing="1" fill="#94a3b8">Data Bus-driven 3D cockpit interaction engine</text>
+
+  <!-- Divider -->
+  <rect x="202" y="178" width="640" height="2" fill="#334155"/>
+
+  <text x="202" y="206" font-family="Consolas, 'Courier New', monospace" font-size="16" letter-spacing="1" fill="#64748b">
+    Detached cursor &#183; Bitmask sync &#183; Zero dependencies
+  </text>
+
+  <!-- Studio mark -->
+  <text x="1180" y="256" text-anchor="end" font-family="Consolas, 'Courier New', monospace" font-weight="700"
+        font-size="15" letter-spacing="3" fill="#f59e0b">TASMAN DYNAMICS</text>
+</svg>

@@ -1,0 +1,57 @@
+[img]{{BANNER_IMAGE_URL — host docs/assets/banner.svg (exported to PNG) and paste the URL here}}[/img]
+
+[b][u]Interaction Framework[/u][/b]
+Data Bus-driven 3D cockpit interaction engine
+
+A Tasman Dynamics production.
+
+[hr][/hr]
+
+A standalone, high-performance 3D interaction engine that bridges the gap between traditional Arma
+3 vehicle controls and professional-grade flight simulation. Pilots interact with complex cockpit
+systems using a detached mouse cursor, driven by a logic-first architecture inspired by real-world
+aviation data bus standards (ARINC 429 / MIL-STD-1553).
+
+[hr][/hr]
+
+[h1]KEY FEATURES[/h1]
+[list]
+[*] [b]Detached Interactive Cursor[/b] — Decouples mouse movement from head-tracking so pilots keep flight stability on HOTAS/Collective while working overhead panels.
+[*] [b]Data Bus Emulation[/b] — Packs switch states into bitmask "System Words" instead of syncing hundreds of individual variables.
+[*] [b]Deterministic Multiplayer Sync[/b] — Request-response pattern ensures every crew member sees identical instrument state.
+[*] [b]High-Performance 3D Raycasting[/b] — Zero framerate impact across hundreds of interactive nodes.
+[*] [b]Rotary Dial & Axis Support[/b] — Smooth analog-style control of radio frequencies, dimmers, and volume knobs.
+[*] [b]Zero Dependencies[/b] — Pure vanilla Arma 3 UI and SQF. No CBA_A3 or external dependencies required.
+[/list]
+
+[h1]HOW IT WORKS[/h1]
+The core engine is strictly decoupled from proprietary vehicle assets. Vehicle modders hook their
+own aircraft into the system by providing a data-driven JSON configuration — no SQF required — via
+the companion Interaction Compat compiler (link below, on GitHub).
+
+[h1]REQUIREMENTS[/h1]
+[list]
+[*] Arma 3 — [b]base game only[/b]. No CBA_A3 or other dependencies.
+[/list]
+
+[h1]SUPPORTED VEHICLE SOURCES[/h1]
+[list]
+[*] Vanilla Arma 3 Aircraft
+[*] RHS Vehicles
+[*] CUP Vehicles
+[*] Community Add-ons (via JSON config)
+[/list]
+
+[hr][/hr]
+
+[h1]LICENSE[/h1]
+Released under the [b]Arma Public License Share Alike (APL-SA)[/b]. Non-commercial use, modification,
+and redistribution are allowed; derivatives must stay in the Arma universe and remain under APL-SA.
+Full text: [url=https://www.bohemia.net/community/licenses/arma-public-license-share-alike]APL-SA[/url]
+
+[hr][/hr]
+
+[b]Links[/b]
+[url=https://github.com/A3-TasmanDynamics/TasDyn-Interaction-Framework]Source on GitHub[/url]  |  [url=https://github.com/A3-TasmanDynamics/TasDyn-Interaction-Compat]Interaction Compat (vehicle compiler)[/url]  |  [url=https://discord.gg/Wt4ahmxVrs]Join the Discord[/url]
+
+[i]Tasman Dynamics — engineering high-fidelity systems for the future of multi-domain simulation.[/i]
